@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     window = UIWindow(windowScene: windowScene)
-    let rootVC = MovieDetailsViewController()
+    let rootVC = MovieListViewController()
     window?.rootViewController = rootVC
     window?.makeKeyAndVisible()
     }

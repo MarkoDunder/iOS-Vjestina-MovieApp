@@ -16,7 +16,7 @@ class MovieDetailsViewController: UIViewController {
     var posterImage:UIImage!
     let movieTitle = UILabel()
     var score = UILabel()
-    let releaseDate=UILabel()
+    let releaseDate = UILabel()
     let genre = UILabel()
     let duration = UILabel()
     let favoritesButton = UIButton()
