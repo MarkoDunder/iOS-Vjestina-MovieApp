@@ -82,7 +82,7 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     private func defineLayoutForViews() {
-        // Define layout constraints for the imgView
+        
         imgView.autoPinEdge(toSuperviewEdge: .top)
         imgView.autoPinEdge(toSuperviewEdge: .leading)
         imgView.autoPinEdge(toSuperviewEdge: .bottom)
@@ -90,12 +90,12 @@ class MovieTableViewCell: UITableViewCell {
         imgView.autoSetDimension(.height, toSize: 142)
         //imgView.autoMatch(.height, to: .width, of: imgView, withMultiplier: 1.47)
 
-        // Define layout constraints for the nameLabel
+       
         nameLabel.autoPinEdge(.leading, to: .trailing, of: imgView, withOffset: 16)
         nameLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 12)
         nameLabel.autoPinEdge(toSuperviewEdge: .trailing,withInset: 12)
 
-        // Define layout constraints for the descriptionLabel
+        
         descriptionLabel.autoPinEdge(.top, to: .bottom, of: nameLabel, withOffset: 8)
         descriptionLabel.autoPinEdge(.leading, to: .trailing, of: imgView, withOffset: 16)
         descriptionLabel.autoPinEdge(toSuperviewEdge: .trailing,withInset: 12)

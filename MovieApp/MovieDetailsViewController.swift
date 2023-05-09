@@ -12,7 +12,7 @@ import PureLayout
 
 
 class MovieDetailsViewController: UIViewController {
-    
+    var id:Int!
     var posterImage:UIImage!
     let movieTitle = UILabel()
     var score = UILabel()
@@ -24,12 +24,26 @@ class MovieDetailsViewController: UIViewController {
     let summary = UILabel()
     let stackView = UIStackView()
     
+    init(id: Int) {
+            self.id = id
+            super.init(nibName: nil, bundle: nil)
+        }
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
 //        let data = MovieUseCase().getDetails(id: 111161)
 //        print(data)
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "Movie List",style: .done, target: self, action:
+                                                                        #selector(handleNextButton))
+        navigationItem.leftBarButtonItem?.tintColor = .systemBlue
+        let titleItem = UILabel()
+        titleItem.text = "Movie details"
+        navigationItem.titleView = titleItem
 
         let posterImage = UIImage(named: "IronMan1.jpg")
         let posterImageView = UIImageView(image: posterImage)
@@ -137,8 +151,12 @@ class MovieDetailsViewController: UIViewController {
         
     }
     
-    
+    @objc func handleNextButton() {
+            navigationController?.popViewController(animated: true)
+        }
 }
+
+
 extension Array {
     func chunked(into size: Int) -> [[Element]] {
         return stride(from: 0, to: count, by: size).map {

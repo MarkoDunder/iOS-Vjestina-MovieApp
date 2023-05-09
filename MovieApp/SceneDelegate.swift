@@ -22,8 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     window = UIWindow(windowScene: windowScene)
-    let rootVC = MovieListViewController()
+    let rootVC = TabBarViewController()
     window?.rootViewController = rootVC
+    let navigationController = UINavigationController(rootViewController: rootVC)
+    window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
     }
     //func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

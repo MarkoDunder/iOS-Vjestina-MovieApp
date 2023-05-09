@@ -10,6 +10,10 @@ import UIKit
 import PureLayout
 import MovieAppData
 
+protocol Coordinator{
+   func start()
+}
+
 class MoviesByCategoryViewController: UIViewController{
         var tableView: UITableView!
         let movies = MovieUseCase().allMovies
@@ -17,6 +21,8 @@ class MoviesByCategoryViewController: UIViewController{
         override func viewDidLoad() {
             super.viewDidLoad()
             buildViews()
+            navigationItem.title = "Movies By Category"
+            view.isUserInteractionEnabled = true
         }
         
         override func viewDidLayoutSubviews() {
@@ -68,6 +74,7 @@ extension MoviesByCategoryViewController:UITableViewDataSource, UITableViewDeleg
             let name = "Trending"
             cell.setCategory(movies: movieCollection, name: name)
         }
+        cell.categoryDelegate = self
         return cell
     }
     
@@ -80,3 +87,9 @@ extension MoviesByCategoryViewController:UITableViewDataSource, UITableViewDeleg
     
 }
 
+extension MoviesByCategoryViewController: MoviesByCategoryCollectionDelegate {
+    func delegateFunction(id: Int) {
+        let vc = MovieDetailsViewController(id: id)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}

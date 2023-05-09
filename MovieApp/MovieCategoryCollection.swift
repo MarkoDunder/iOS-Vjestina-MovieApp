@@ -10,11 +10,14 @@ import UIKit
 import PureLayout
 import MovieAppData
 
+protocol MoviesByCategoryCollectionDelegate {
+    func delegateFunction(id: Int)
+}
 class MovieCategoryCollection:UITableViewCell{
     static let identifier = "MovieCategoryCollection"
     
     
-    
+    var categoryDelegate: MoviesByCategoryCollectionDelegate?
     var collectionView: UICollectionView!
     var nameLabel: UILabel!
     var movies = [MovieModel]()
@@ -111,6 +114,10 @@ extension MovieCategoryCollection: UICollectionViewDataSource,UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             return CGSize(width: 125, height: 180)
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            categoryDelegate?.delegateFunction(id: movies[indexPath.row].id)
         }
 
     }

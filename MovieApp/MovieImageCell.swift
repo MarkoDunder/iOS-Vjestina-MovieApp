@@ -16,6 +16,8 @@ class MovieImageCell:UICollectionViewCell{
     var img:UIImage!
     var imgView:UIImageView!
     var likeButton:UIButton!
+    var id:Int!
+    var navigationController:UINavigationController!
     
     override init(frame: CGRect) {
             super.init(frame: frame)
@@ -78,3 +80,12 @@ class MovieImageCell:UICollectionViewCell{
         
     }
     
+extension MovieImageCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let movieDetailsViewsController = MovieDetailsViewController(id: id)
+        movieDetailsViewsController.tabBarController?.selectedIndex = indexPath.row
+        
+        self.navigationController.pushViewController(movieDetailsViewsController, animated: true)
+    }
+}
